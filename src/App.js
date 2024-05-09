@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Whatsapp from "./components/Whatsapp";
-
+import Twitter from "./components/Twitter";
 const App = () => {
   const url = "https://api.quotable.io/random";
   let quoteData = {
@@ -36,9 +36,15 @@ const App = () => {
           <button onClick={copy} className="btn">
             Copy
           </button>
-          <Whatsapp
-            url={"*" + quote.author + "*" + " once said: " + quote.content}
-          />
+          <div>
+            <Whatsapp
+              url={"*" + quote.author + "*" + " once said: " + quote.content}
+            />
+            <Twitter
+              url={url}
+              title={quote.content}
+            ></Twitter>
+          </div>
           <button onClick={generateQuote}>Generate Another Quote</button>
         </div>
       </div>
