@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import Facebook from "./components/Facebook";
 import Whatsapp from "./components/Whatsapp";
 
 const App = () => {
@@ -37,7 +36,6 @@ const App = () => {
           <button onClick={copy} className="btn">
             Copy
           </button>
-          <Facebook url={quote.author + " once said: " + quote.content} />
           <Whatsapp  url={quote.author + " once said: " + quote.content}/>
           <button onClick={generateQuote}>Generate Another Quote</button>
         </div>
