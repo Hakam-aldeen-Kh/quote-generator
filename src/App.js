@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Whatsapp from "./components/Whatsapp";
 import Twitter from "./components/Twitter";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 const App = () => {
   const url = "https://api.quotable.io/random";
   let quoteData = {
@@ -23,7 +24,22 @@ const App = () => {
     navigator.clipboard.writeText(
       quote.author + " once said: " + quote.content
     );
-    alert("copied");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "copied successfully",
+      background: "#ffffff",
+    });
   };
 
   return (
@@ -40,10 +56,7 @@ const App = () => {
             <Whatsapp
               url={"*" + quote.author + "*" + " once said: " + quote.content}
             />
-            <Twitter
-              url={url}
-              title={quote.content}
-            ></Twitter>
+            <Twitter url={url} title={quote.content}></Twitter>
           </div>
           <button onClick={generateQuote}>Generate Another Quote</button>
         </div>
