@@ -36,7 +36,9 @@ const App = () => {
           <button onClick={copy} className="btn">
             Copy
           </button>
-          <Whatsapp  url={quote.author + " once said: " + quote.content}/>
+          <Whatsapp
+            url={"*" + quote.author + "*" + " once said: " + quote.content}
+          />
           <button onClick={generateQuote}>Generate Another Quote</button>
         </div>
       </div>
